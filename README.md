@@ -2,16 +2,14 @@
 
 > Enable absolute paths in a TypeScript project
 
-Import files with `~/`. Assumes a `./src` folder. This project might be turned into a cli in the future.
+Import files with `~/`. Assumes a `./src` folder.
 
 `src/example.ts` -> `~/example`
 
-## tsconfig
+## Usage
 
-```json
-"baseUrl": "./src",
-"paths": {
-  "~/*": ["./*"],
+```sh
+npx enable-absolute-paths@latest
 ```
 
 ## vite

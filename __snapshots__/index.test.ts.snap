@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`enable-absolute-paths 1`] = `
+" enable-absolute-paths
+
+ success!"
+`;
