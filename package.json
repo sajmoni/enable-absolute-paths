@@ -14,10 +14,14 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "test": "npm run build && chmod +x dist/index.js && vitest",
-    "release": "npm run build && np"
+    "release": "npm run build && np",
+    "test": "npm run build && chmod +x dist/index.js && vitest"
   },
   "prettier": "prettier-config-one",
+  "dependencies": {
+    "load-json-file": "7.0.1",
+    "type-fest": "3.12.0"
+  },
   "devDependencies": {
     "@types/node": "20.3.1",
     "execa": "7.1.1",
@@ -32,9 +36,5 @@
   },
   "engines": {
     "node": ">=20"
-  },
-  "dependencies": {
-    "load-json-file": "7.0.1",
-    "type-fest": "3.12.0"
   }
 }
