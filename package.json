@@ -20,19 +20,19 @@
   "prettier": "prettier-config-one",
   "dependencies": {
     "load-json-file": "7.0.1",
-    "type-fest": "3.12.0"
+    "type-fest": "4.8.1"
   },
   "devDependencies": {
-    "@types/node": "20.3.1",
-    "execa": "7.1.1",
-    "get-bin-path": "10.0.0",
-    "np": "7.7.0",
-    "prettier": "2.8.8",
-    "prettier-config-one": "0.1.1",
-    "tempy": "3.0.0",
+    "@types/node": "20.9.2",
+    "execa": "8.0.1",
+    "get-bin-path": "11.0.0",
+    "np": "8.0.4",
+    "prettier": "3.1.0",
+    "prettier-config-one": "0.2.0",
+    "tempy": "3.1.0",
     "tsconfig-one": "0.0.8",
-    "typescript": "5.1.3",
-    "vitest": "0.32.2"
+    "typescript": "5.2.2",
+    "vitest": "0.34.6"
   },
   "engines": {
     "node": ">=20"

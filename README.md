@@ -8,7 +8,7 @@ Import files with `~/`. Assumes a `./src` folder.
 
 ## Usage
 
-```sh
+```console
 npx enable-absolute-paths@latest
 ```
 
