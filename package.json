@@ -20,7 +20,8 @@
   "prettier": "prettier-config-one",
   "dependencies": {
     "load-json-file": "7.0.1",
-    "type-fest": "4.8.1"
+    "type-fest": "4.8.1",
+    "write-pretty-file": "0.1.0"
   },
   "devDependencies": {
     "@types/node": "20.9.2",

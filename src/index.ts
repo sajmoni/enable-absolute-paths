@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { writeFile } from 'node:fs/promises'
+import writePrettyFile from 'write-pretty-file'
 
 import type { TsConfigJson } from 'type-fest'
 import { loadJsonFile } from 'load-json-file'
@@ -30,7 +30,7 @@ try {
     },
   }
 
-  await writeFile('tsconfig.json', JSON.stringify(updatedTsconfig))
+  await writePrettyFile('tsconfig.json', updatedTsconfig)
   console.log(' success!')
 } catch (error) {
   console.log(' failed to enable absolute paths')
