@@ -34,4 +34,5 @@ try {
   console.log(' success!')
 } catch (error) {
   console.log(' failed to enable absolute paths')
+  throw error
 }
