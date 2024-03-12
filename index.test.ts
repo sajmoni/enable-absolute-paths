@@ -1,12 +1,10 @@
-import path from 'node:path'
-
 import { test, expect } from 'vitest'
 import { getBinPath } from 'get-bin-path'
 import { temporaryDirectory } from 'tempy'
 import { execa } from 'execa'
-import { loadJsonFile } from 'load-json-file'
-import type { TsConfigJson } from 'type-fest'
-import { writeFile } from 'node:fs/promises'
+import typescriptPkg from 'typescript'
+const { findConfigFile, sys, readConfigFile } = typescriptPkg
+import writePrettyFile from 'write-pretty-file'
 
 test('enable-absolute-paths', async () => {
   const binPath = await getBinPath()
@@ -14,7 +12,11 @@ test('enable-absolute-paths', async () => {
     throw new Error('Bin path not found')
   }
   const directory = temporaryDirectory()
-  await writeFile(`${directory}/tsconfig.json`, JSON.stringify({}))
+  await writePrettyFile(`${directory}/tsconfig.json`, {
+    compilerOptions: {
+      module: 'esnext',
+    },
+  })
 
   const { stdout } = await execa(binPath, [], {
     cwd: directory,
@@ -24,9 +26,17 @@ test('enable-absolute-paths', async () => {
     },
   })
 
-  const updatedTsConfig = (await loadJsonFile(
-    path.join(directory, 'tsconfig.json'),
-  )) as TsConfigJson
+  const tsconfigPath = findConfigFile(
+    directory,
+    sys.fileExists,
+    'tsconfig.json',
+  )
+
+  if (!tsconfigPath) {
+    throw new Error('No tsconfig path found!')
+  }
+
+  const { config: updatedTsConfig } = readConfigFile(tsconfigPath, sys.readFile)
 
   expect(updatedTsConfig?.compilerOptions?.baseUrl).toBe('./src')
   expect(updatedTsConfig?.compilerOptions?.paths).toEqual({

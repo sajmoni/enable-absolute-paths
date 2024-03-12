@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 import writePrettyFile from 'write-pretty-file'
-
-import type { TsConfigJson } from 'type-fest'
-import { loadJsonFile } from 'load-json-file'
+import typescriptPkg from 'typescript'
+const { findConfigFile, sys, readConfigFile } = typescriptPkg
 
 console.log(' enable-absolute-paths')
 console.log()
@@ -16,7 +15,17 @@ const updatedCompilerOptions = {
 }
 
 try {
-  const tsconfig = (await loadJsonFile('tsconfig.json')) as TsConfigJson
+  const tsconfigPath = findConfigFile(
+    process.cwd(),
+    sys.fileExists,
+    'tsconfig.json',
+  )
+
+  if (!tsconfigPath) {
+    throw new Error('No tsconfig path found!')
+  }
+
+  const { config: tsconfig } = readConfigFile(tsconfigPath, sys.readFile)
 
   const updatedTsconfig = {
     ...tsconfig,
