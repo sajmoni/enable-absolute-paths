@@ -19,7 +19,7 @@ If using `vite`, add this to your `vite.config.ts`
 ```ts
 resolve: {
     alias: {
-      '~': resolve(__dirname, 'src'),
+        '~': resolve(import.meta.dirname, 'src'),
     },
-  },
+}
 ```
