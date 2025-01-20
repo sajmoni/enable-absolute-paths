@@ -21,8 +21,7 @@ test('enable-absolute-paths', async () => {
   const { stdout } = await execa(binPath, [], {
     cwd: directory,
     env: {
-      // @ts-expect-error
-      FORCE_COLOR: 2,
+      FORCE_COLOR: '2',
     },
   })
 
